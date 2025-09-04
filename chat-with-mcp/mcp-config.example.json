@@ -1,0 +1,96 @@
+{
+  "servers": [
+    {
+      "name": "Filesystem",
+      "description": "File system operations - read, write, and list files and directories",
+      "transport": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "/tmp"]
+      },
+      "enabled": true
+    },
+    {
+      "name": "Brave Search",
+      "description": "Web search capabilities using Brave Search API",
+      "transport": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-brave-search"]
+      },
+      "env": {
+        "BRAVE_API_KEY": "your-brave-api-key-here"
+      },
+      "enabled": false,
+      "note": "Get API key from https://api.search.brave.com/app/keys"
+    },
+    {
+      "name": "Memory",
+      "description": "Persistent memory across conversations",
+      "transport": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-memory"]
+      },
+      "enabled": true
+    },
+    {
+      "name": "PostgreSQL",
+      "description": "PostgreSQL database operations",
+      "transport": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-postgres"]
+      },
+      "env": {
+        "POSTGRES_CONNECTION_STRING": "postgresql://user:password@localhost:5432/dbname"
+      },
+      "enabled": false,
+      "note": "Requires PostgreSQL database connection"
+    },
+    {
+      "name": "Git",
+      "description": "Git repository operations",
+      "transport": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-git", "/path/to/repository"]
+      },
+      "enabled": false,
+      "workingDirectory": "/path/to/repository"
+    },
+    {
+      "name": "SQLite",
+      "description": "SQLite database operations",
+      "transport": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-sqlite", "/path/to/database.db"]
+      },
+      "enabled": false
+    },
+    {
+      "name": "Puppeteer",
+      "description": "Web automation and scraping",
+      "transport": {
+        "type": "stdio",
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-puppeteer"]
+      },
+      "enabled": false
+    },
+    {
+      "name": "Custom SSE Server",
+      "description": "Example of SSE-based MCP server",
+      "transport": {
+        "type": "sse",
+        "url": "http://localhost:3001/mcp",
+        "headers": {
+          "Authorization": "Bearer your-api-key"
+        }
+      },
+      "enabled": false,
+      "note": "Example of HTTP SSE transport"
+    }
+  ]
+}
